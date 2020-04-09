@@ -1,6 +1,6 @@
 # GoogleDriveTasker
 
-GoogleDriveTasker is .NET Core console application which performs tasks (sets of actions) on the connected Google Drive.
+GoogleDriveTasker is .NET Core console application which performs tasks (sets of actions) on files stored in the connected Google Drive.
 
 ## Prerequisites
 
@@ -21,4 +21,4 @@ Download the client configuration and save the file as credentials.json in your 
 
 ## Getting Started
 
-Implement the IGoogleDriveTask interface per operatin and register them in Program.cs
+Just add an implementation of the IGoogleDriveFileTask interface per operation, and it will be auto discoverd and executed per file.
