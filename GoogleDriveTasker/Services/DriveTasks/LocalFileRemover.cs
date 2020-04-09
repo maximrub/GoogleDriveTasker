@@ -26,9 +26,13 @@ namespace GoogleDriveTasker.Services.DriveTasks
             FileInfo file = new FileInfo(localFullName);
             if (file.Exists && file.Length == googleDriveFile.SizeInBytes)
             {
-                await using FileStream inputStream = new FileStream(file.FullName, FileMode.Open);
-                using MD5 algorithm = MD5.Create();
-                byte[] md5Hash = CalculateHash(inputStream, algorithm);
+                byte[] md5Hash;
+                await using (FileStream inputStream = new FileStream(file.FullName, FileMode.Open))
+                {
+                    using MD5 algorithm = MD5.Create();
+                    md5Hash = CalculateHash(inputStream, algorithm);
+                }
+
                 string md5HashHex = string.Join(string.Empty, md5Hash.Select(b => b.ToString("x2")));
                 if (md5HashHex.Equals(googleDriveFile.Md5Checksum, StringComparison.InvariantCultureIgnoreCase))
                 {
