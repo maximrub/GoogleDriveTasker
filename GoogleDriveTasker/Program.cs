@@ -69,7 +69,8 @@ namespace GoogleDriveTasker
                 .Named<IGoogleDriveFileTask>("GoogleDriveFileTask");
             containerBuilder.Register(context =>
                     new GoogleDriveFileTasksComposite(
-                        context.ResolveNamed<IEnumerable<IGoogleDriveFileTask>>("GoogleDriveFileTask")))
+                        context.ResolveNamed<IEnumerable<IGoogleDriveFileTask>>("GoogleDriveFileTask"),
+                        context.Resolve<ILogger<GoogleDriveFileTasksComposite>>()))
                 .As<IGoogleDriveFileTask>();
         }
 

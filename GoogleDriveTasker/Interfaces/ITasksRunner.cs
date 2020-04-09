@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace GoogleDriveTasker.Interfaces.DriveTasks
+namespace GoogleDriveTasker.Interfaces
 {
     public interface ITasksRunner
     {
